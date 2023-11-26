@@ -8,6 +8,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const blog = ()=>{
     fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9`)
     .then((res) => res.json())
