@@ -1,18 +1,31 @@
-.cover{
+.home .cover{
   height: 400px;
-  background-color: #0000001c;
+  background-color: #f6f6f6;
   position: relative;
 }
-.cover h1{
+.home .cover .overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000001c;
+}
+.home .cover .overlay .title{
+  color: black;
+  margin-top: 150px;
+}
+.home .cover .overlay .title h1{
   font-size: 3rem;
 }
-.cover p{
+.home .cover .overlay .title p{
   font-size: 2.5rem;
 }
-.coverContent{
-  padding-top: 125px;
-  position: absolute;
-}
-.grid{
-  z-index: 1;
+.home .cardContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 28px;
+  margin-top: -80px;
+  margin-bottom: 220px;
+  position: relative;
 }
