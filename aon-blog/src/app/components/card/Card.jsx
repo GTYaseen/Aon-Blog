@@ -1,12 +1,28 @@
+import React, { useState, useEffect } from "react";
 import styles from "./card.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+
 const Card = ({ blog }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favList, setFavList] = useState([]);
+
+  const handleFavorite = () => {
+
+    setIsFavorite(!isFavorite);
+  };
+  const heartIcon = isFavorite ? (
+    <FaHeart style={{ color: "red" }} />
+  ) : (
+    <FaRegHeart />
+  );
+
   return (
     <div className={styles.card}>
       <div className={styles.img}>
-        <Image src={blog.photo_url} alt={blog.title} fill/>
+        <Image src={blog.photo_url} alt={blog.title} fill />
       </div>
       <div className={styles.title}>
         <h1>{blog.title}</h1>
@@ -15,10 +31,14 @@ const Card = ({ blog }) => {
         <p>{blog.category}</p>
       </div>
       <div className={styles.footer}>
-        <Link href="/">Read Article</Link>
+        <div className={styles.read}>
+          <Link href={`/article/${blog.id}`}>Read Article </Link>
+          <button onClick={handleFavorite}>{heartIcon}</button>
+        </div>
         <p>{dayjs(blog.created_at).format("YYYY, MMM DD")}</p>
       </div>
     </div>
   );
 };
+
 export default Card;

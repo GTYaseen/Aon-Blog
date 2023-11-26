@@ -20,7 +20,7 @@ function Header() {
                 <Link href="/">About</Link>
               </li>
               <li>
-                <Link href="/">Help</Link>
+                <Link href="/favorite">favorite</Link>
               </li>
             </ul>
           </div>

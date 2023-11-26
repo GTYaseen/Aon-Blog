@@ -1,20 +1,12 @@
-.main{
-  position: relative;
-}
-.over{
-  position: absolute;
-  margin-top: 500px;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 100;
-}
-.main .cover{
+.home .cover{
   height: 400px;
-  background-color: transparent;
+  background-color: #f6f6f6;
   position: relative;
 }
-.main .cover .overlay{
+.home .over{
+  margin-top: -80px;
+}
+.home .cover .overlay{
   position: absolute;
   top: 0;
   left: 0;
@@ -22,21 +14,20 @@
   bottom: 0;
   background-color: #0000001c;
 }
-.main .cover .overlay .title{
+.home .cover .overlay .title{
   color: black;
   margin-top: 150px;
 }
-.main .cover .overlay .title h1{
+.home .cover .overlay .title h1{
   font-size: 3rem;
 }
-.main .cover .overlay .title p{
+.home .cover .overlay .title p{
   font-size: 2.5rem;
 }
-.main .cardContainer{
+.home .cardContainer{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 28px;
-  margin-top: -80px;
   margin-bottom: 220px;
 }
 .loader{
@@ -82,4 +73,16 @@
     left: 2px;
   }
 }
-  
+@media screen and (max-width: 900px) {
+  .home .cardContainer{
+    grid-template-columns: repeat(2, 1fr);
+
+    margin: auto;
+  }
+}
+@media screen and (max-width: 440px) {
+  .home .cardContainer{
+    grid-template-columns: repeat(1, 1fr);
+    margin: auto;
+  }
+}
