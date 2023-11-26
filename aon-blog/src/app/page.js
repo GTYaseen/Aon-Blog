@@ -5,39 +5,63 @@ import Card from "./components/card/Card";
 import Container from "./components/containter/Container";
 import Footer from "./components/footer/Footer";
 import styles from "./page.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const blog = ()=>{
-    fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9`)
-    .then((res) => res.json())
-    .then((data) => setList(data.blogs));
+  const [skip, setSkip] = useState(0);
+  const blog = () => {
+    fetch(
+      `https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setList([...list, ...data.blogs]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching blog data:", error);
+        setLoading(false);
+      });
   };
   useEffect(() => {
     blog();
-  }, []);
+  }, [skip]);
   return (
-    <main className={styles.home}>
+    <>
       <Header />
-      <div className={styles.cover}>
-        <div className={styles.overlay}>
-          <div className={styles.title}>
-            <Container>
-              <h1>Simple Blog.</h1>
-              <p>A blog created by Aon 2023</p>
-            </Container>
+      <main className={styles.main}>
+        <div className={styles.home}>
+          <div className={styles.cover}>
+            <div className={styles.overlay}>
+              <div className={styles.title}>
+                <Container>
+                  <h1>Simple Blog.</h1>
+                  <p>A blog created by Aon 2023</p>
+                </Container>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <Container>
-        <div className={styles.cardContainer}>
-          {list.map((blog, index) => (
-            <Card blog={blog} key={index}/>
-          ))}
+        <div className={styles.over}>
+          <Container>
+            <InfiniteScroll
+              dataLength={list.length}
+              next={() => setSkip(skip + 9)}
+              hasMore={true}
+            >
+              <div className={styles.cardContainer}>
+                {loading && <span className={styles.loader}></span>}
+                {list.map((blog, index) => (
+                  <Card blog={blog} key={index} />
+                ))}
+              </div>
+            </InfiniteScroll>
+          </Container>
+          <Footer />
         </div>
-      </Container>
-      <Footer />
-    </main>
+      </main>
+    </>
   );
 }
