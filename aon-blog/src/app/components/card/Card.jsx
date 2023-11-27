@@ -4,26 +4,29 @@ import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useStore } from "@/app/store";
 
 const Card = ({ blog }) => {
-  const [isFavorite, setIsFavorite] = useState([]);
-  const [favList, setFavList] = useState([
-    {
-      id: 1,
-      title: "test",
-      category: "test",
-    }
-  ]);
+  const [isFavorite, setIsFavorite] = useState(true);
+  const { favorite, setFavorite } = useStore();
 
   const handleFavorite = () => {
-    if (isFavorite == isFavorite.includes(blog.id)) {
-      setIsFavorite([...isFavorite, blog.id]);
-    } else {
-      setIsFavorite(isFavorite.filter((id) => id !== blog.id));
+    setIsFavorite(!isFavorite);
+    let newItem = {
+      item: blog,
+      favorite: isFavorite,
+    };
+    let Blog = favorite.find((item) => item?.id === newItem?.id);
+    if (!Blog) {
+      setFavorite([...favorite, newItem]);
+    }else{
+      setFavorite(favorite.filter((item) => item?.id !== newItem?.id));
     }
-    console.log(isFavorite);
   };
-  const heartIcon = isFavorite ? (
+  useEffect(() => {
+    console.log(favorite);
+  }, [favorite]);
+  const heartIcon = !isFavorite ? (
     <FaHeart style={{ color: "red" }} />
   ) : (
     <FaRegHeart />
