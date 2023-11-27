@@ -6,19 +6,28 @@ import dayjs from "dayjs";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 const Card = ({ blog }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [favList, setFavList] = useState([]);
+  const [isFavorite, setIsFavorite] = useState([]);
+  const [favList, setFavList] = useState([
+    {
+      id: 1,
+      title: "test",
+      category: "test",
+    }
+  ]);
 
   const handleFavorite = () => {
-
-    setIsFavorite(!isFavorite);
+    if (isFavorite == isFavorite.includes(blog.id)) {
+      setIsFavorite([...isFavorite, blog.id]);
+    } else {
+      setIsFavorite(isFavorite.filter((id) => id !== blog.id));
+    }
+    console.log(isFavorite);
   };
   const heartIcon = isFavorite ? (
     <FaHeart style={{ color: "red" }} />
   ) : (
     <FaRegHeart />
   );
-
   return (
     <div className={styles.card}>
       <div className={styles.img}>
