@@ -1,6 +1,6 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 export const useStore = create((set) => ({
   favorite: [],
-  setFavorite: (item) => set((state) => ({ favorite: [...state.favorite, item] })),
-}))
+  setFavorite: (favorite) => set({ favorite }),
+}));

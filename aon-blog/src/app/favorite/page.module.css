@@ -30,6 +30,11 @@
     gap: 40px 28px;
     margin-bottom: 220px;
   }
+  .home .cardContainer span{
+    margin-top: 300px;
+    margin-left: 300px;
+    font-size: 10rem;
+  }
   .loader{
     width: 200px;
     height: 40px;

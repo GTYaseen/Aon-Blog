@@ -1,9 +1,13 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Container from "../containter/Container";
 import styles from "./header.module.css";
 import Link from "next/link";
+import { useStore } from "@/app/store";
 
 function Header() {
+  const { favorite } = useStore();
+  console.log(favorite);
   return (
     <div className={styles.border}>
       <Container>
@@ -20,7 +24,12 @@ function Header() {
                 <Link href="/">About</Link>
               </li>
               <li>
-                <Link href="/favorite">favorite</Link>
+                <Link href="/favorite">
+                  favorite{" "}
+                  {favorite?.length !== 0 && (
+                    <div className={styles.count}>{favorite.length}</div>
+                  )}
+                </Link>
               </li>
             </ul>
           </div>

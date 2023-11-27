@@ -1,13 +1,30 @@
 "use client";
-import { useState} from "react";
-import Card from "../components/card/Card";
+import { useEffect, useState } from "react";
 import Container from "../components/containter/Container";
 import Footer from "../components/footer/Footer";
 import styles from "./page.module.css";
 import Header from "../components/Header/Header";
+import FavCard from "../components/FavCard/FavCard";
+
 
 export default function Favorite() {
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("favorite"));
+    if (items) {
+      setItems(items);
+    }
+    if (items.length === 0)
+  {
+    setLoading(true);
+  }else{
+    setLoading(false);
+  }
+  }, [items]);
+  console.log(items);
+
   return (
     <main className={styles.home}>
       <Header />
@@ -23,6 +40,12 @@ export default function Favorite() {
       </div>
       <div className={styles.over}>
         <Container>
+            <div className={styles.cardContainer}>
+            {loading===true && <span>Empty</span>}
+              {items.map((fblog, index) => (
+                <FavCard fblog={fblog.item} key={index} />
+              ))}
+            </div>
         </Container>
       </div>
       <Footer />
