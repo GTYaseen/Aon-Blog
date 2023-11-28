@@ -5,8 +5,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import FavBtn2 from "../favBtn/FavBtn";
 
-const FavCard = ({ fblog , fbtn}) => {
-    // console.log(fblog);
+const FavCard = ({ fblog }) => {
   return (
     <div className={styles.card}>
       <div className={styles.img}>
@@ -21,6 +20,7 @@ const FavCard = ({ fblog , fbtn}) => {
       <div className={styles.footer}>
         <div className={styles.read}>
           <Link href={`/article/${fblog.id}`}>Read Article </Link>
+          <FavBtn2 blog={fblog} />
         </div>
         <p>{dayjs(fblog.created_at).format("YYYY, MMM DD")}</p>
       </div>

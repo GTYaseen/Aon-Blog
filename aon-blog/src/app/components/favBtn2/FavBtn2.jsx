@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useStore } from "@/app/store";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 
-const FavBtn = ({ blog }) => {
+const FavBtn2 = ({ blog }) => {
   const { favorite, setFavorite } = useStore();
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -13,27 +13,13 @@ const FavBtn = ({ blog }) => {
 
   const handleFavorite = () => {
     let updatedFavorite = [...favorite];
-    const foundIndex = updatedFavorite.findIndex(
-      (item) => item.item.id === blog.id
-    );
 
-    if (foundIndex !== -1) {
-      // If the blog is already in the favorites, toggle its status
-      updatedFavorite[foundIndex].favorite =
-        !updatedFavorite[foundIndex].favorite;
-    } else {
-      // If the blog is not in the favorites, add it
-      updatedFavorite.push({ item: blog, favorite: true });
-    }
 
     // Remove items with favorite: false
     updatedFavorite = updatedFavorite.filter((item) => item.favorite);
     setFavorite(updatedFavorite);
-
-    // Save the updated favorite data to local storage
-    localStorage.setItem('favorite', JSON.stringify(updatedFavorite));
   };
-
+  localStorage.setItem('favorite', JSON.stringify(favorite));
   const heartIcon = isFavorite ? (
     <FaHeart style={{ color: "red" }} />
   ) : (
@@ -47,4 +33,4 @@ const FavBtn = ({ blog }) => {
   );
 };
 
-export default FavBtn;
+export default FavBtn2;

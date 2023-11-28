@@ -26,9 +26,13 @@
     object-fit: cover;
 }
 .content{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     color: #666666;
+}
+.fcontent{
+    margin-top: 40px;
+    margin-bottom: 100px;
 }
 .hr{
     margin-top: 20px;
@@ -40,4 +44,21 @@
     border-top: 10px dotted #00000042;
     margin: auto;
     max-width: 100px;
+}
+@media screen and (max-width: 580px) {
+    .top .title h1{
+        font-size: 1.5rem;
+    }
+    .top .title p{
+        font-size: 1rem;
+    }
+    .top .date p{
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .top{
+        display: flex;
+        flex-direction: column;
+    }
 }

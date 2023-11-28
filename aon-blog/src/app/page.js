@@ -14,7 +14,7 @@ export default function Home() {
   // const [favorite, setFavorite] = useState([]);
   const blog = () => {
     fetch(
-      `https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`
+      `https://api.slingacademy.com/v1/sample-data/blog-posts?limit=12&offset=${skip}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -26,8 +26,6 @@ export default function Home() {
         setLoading(false);
       });
   };
-
-  const fhome = localStorage.getItem("favorite");
 
   useEffect(() => {
     blog();
@@ -50,7 +48,7 @@ export default function Home() {
         <Container>
           <InfiniteScroll
             dataLength={list.length}
-            next={() => setSkip(skip + 9)}
+            next={() => setSkip(skip + 12)}
             hasMore={true}
             className={styles.over}
             endMessage={
@@ -59,7 +57,7 @@ export default function Home() {
             loader={<span className={styles.loader}></span>}
           >
             <div className={styles.cardContainer}>
-              {loading && <span className={styles.loader}></span>}
+              {loading && <span className={styles.loader}>Loading</span>}
               {list.map((blog, index) => (
                 <Card blog={blog} key={index} />
               ))}

@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect } from "react";
 import Container from "../containter/Container";
 import styles from "./header.module.css";
 import Link from "next/link";
@@ -7,7 +6,6 @@ import { useStore } from "@/app/store";
 
 function Header() {
   const { favorite } = useStore();
-  console.log(favorite);
   return (
     <div className={styles.border}>
       <Container>

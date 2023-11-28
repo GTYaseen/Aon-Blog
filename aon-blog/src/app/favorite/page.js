@@ -7,7 +7,6 @@ import Header from "../components/Header/Header";
 import FavCard from "../components/FavCard/FavCard";
 
 
-// localStorage.getItem()
 export default function Favorite() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,8 +22,7 @@ export default function Favorite() {
   }else{
     setLoading(false);
   }
-  }, []);
-  console.log(items);
+  }, [items]);
 
   return (
     <main className={styles.home}>
@@ -42,7 +40,7 @@ export default function Favorite() {
       <div className={styles.over}>
         <Container>
             <div className={styles.cardContainer}>
-            {loading===true && <span>Empty</span>}
+            {loading===true && <span className={styles.loader}>Empty</span>}
               {items.map((fblog, index) => (
                 <FavCard fblog={fblog.item} key={index} />
               ))}

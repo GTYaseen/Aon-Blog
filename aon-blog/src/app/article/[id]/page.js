@@ -34,7 +34,7 @@
           </div>
           <div className={Styles.content} dangerouslySetInnerHTML={{__html: `${data.blog.content_text.slice(0, 600)}...`}}/>
           <div className={Styles.hr}><hr/></div>
-          <div dangerouslySetInnerHTML={{__html: data.blog.content_html}}/>
+          <div className={Styles.fcontent} dangerouslySetInnerHTML={{__html: data.blog.content_html}}/>
         </Container>
         <Footer />
       </main>
