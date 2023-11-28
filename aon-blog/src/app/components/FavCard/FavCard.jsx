@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import FavBtn2 from "../favBtn/FavBtn";
 
 const FavCard = ({ fblog , fbtn}) => {
-    console.log(fblog);
+    // console.log(fblog);
   return (
     <div className={styles.card}>
       <div className={styles.img}>

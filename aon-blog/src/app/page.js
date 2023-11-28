@@ -11,7 +11,7 @@ export default function Home() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [skip, setSkip] = useState(0);
-  const [favorite, setFavorite] = useState([]);
+  // const [favorite, setFavorite] = useState([]);
   const blog = () => {
     fetch(
       `https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`
@@ -27,9 +27,12 @@ export default function Home() {
       });
   };
 
+  const fhome = localStorage.getItem("favorite");
+
   useEffect(() => {
     blog();
   }, [skip]);
+
   return (
     <main className={styles.home}>
       <Header />

@@ -7,6 +7,7 @@ import Header from "../components/Header/Header";
 import FavCard from "../components/FavCard/FavCard";
 
 
+// localStorage.getItem()
 export default function Favorite() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ export default function Favorite() {
   }else{
     setLoading(false);
   }
-  }, [items]);
+  }, []);
   console.log(items);
 
   return (

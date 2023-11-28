@@ -28,7 +28,6 @@ const FavBtn = ({ blog }) => {
 
     // Remove items with favorite: false
     updatedFavorite = updatedFavorite.filter((item) => item.favorite);
-
     setFavorite(updatedFavorite);
   };
   localStorage.setItem('favorite', JSON.stringify(favorite));
