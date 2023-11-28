@@ -6,11 +6,13 @@ import Container from "./components/containter/Container";
 import Footer from "./components/footer/Footer";
 import styles from "./page.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useStore } from "./store";
 
 export default function Home() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [skip, setSkip] = useState(0);
+  const { setFavorite } = useStore();
   // const [favorite, setFavorite] = useState([]);
   const blog = () => {
     fetch(
@@ -30,6 +32,11 @@ export default function Home() {
   useEffect(() => {
     blog();
   }, [skip]);
+
+  useEffect(() => {
+    let fav = localStorage.getItem("blog-fav");
+    if (fav) setFavorite(JSON.parse(fav));
+  }, []);
 
   return (
     <main className={styles.home}>

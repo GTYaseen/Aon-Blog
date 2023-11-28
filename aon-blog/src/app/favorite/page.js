@@ -5,24 +5,16 @@ import Footer from "../components/footer/Footer";
 import styles from "./page.module.css";
 import Header from "../components/Header/Header";
 import FavCard from "../components/FavCard/FavCard";
-
+import { useStore } from "../store";
 
 export default function Favorite() {
-  const [items, setItems] = useState([]);
+  const { favorite, setFavorite } = useStore();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("favorite"));
-    if (items) {
-      setItems(items);
-    }
-    if (items.length === 0)
-  {
-    setLoading(true);
-  }else{
-    setLoading(false);
-  }
-  }, [items]);
+    let fav = localStorage.getItem("blog-fav");
+    if (fav) setFavorite(JSON.parse(fav));
+  }, []);
 
   return (
     <main className={styles.home}>
@@ -39,12 +31,12 @@ export default function Favorite() {
       </div>
       <div className={styles.over}>
         <Container>
-            <div className={styles.cardContainer}>
-            {loading===true && <span className={styles.loader}>Empty</span>}
-              {items.map((fblog, index) => (
-                <FavCard fblog={fblog.item} key={index} />
-              ))}
-            </div>
+          <div className={styles.cardContainer}>
+            {loading === true && <span className={styles.loader}>Empty</span>}
+            {favorite.map((fblog, index) => (
+              <FavCard fblog={fblog} key={index} />
+            ))}
+          </div>
         </Container>
       </div>
       <Footer />
