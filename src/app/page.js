@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Header from "./components/Header/header";
+import Header from "./components/Header/Header";
 import Card from "./components/card/Card";
 import Container from "./components/Container/Container";
 import Footer from "./components/footer/Footer";
