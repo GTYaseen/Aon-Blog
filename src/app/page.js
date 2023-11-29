@@ -1,5 +1,4 @@
 "use client";
-import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Card from "./components/card/Card";
@@ -59,9 +58,13 @@ export default function Home() {
           intro: "Explore the blog posts here!",
         },
         {
-          element: ".header",
-          intro: "This is the header",
-        }
+          element: ".favBtnContainer",
+          intro: "This is the favorite button",
+        },
+        {
+          element: "a[href='/favorite']", // Use the selector for the 'favorite' link
+          intro: "This is the favorite section",
+        },
       ];
 
       homeIntroRef.current = introJs().setOptions({
@@ -72,7 +75,7 @@ export default function Home() {
       // Start home intro after a delay
       setTimeout(() => {
         homeIntroRef.current.start();
-      }, 1000);
+      }, 2000);
     };
 
     initializeIntro();
@@ -94,7 +97,6 @@ export default function Home() {
         </div>
       </div>
       <Container>
-        <div className="card-div">
           <div className={styles.over}>
             <InfiniteScroll
               dataLength={list.length}
@@ -110,7 +112,6 @@ export default function Home() {
               </div>
             </InfiniteScroll>
           </div>
-        </div>
       </Container>
       <Footer />
     </main>

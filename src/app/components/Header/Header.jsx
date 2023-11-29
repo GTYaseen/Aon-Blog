@@ -22,7 +22,7 @@ function Header() {
                 <Link href="/">About</Link>
               </li>
               <li>
-                <Link href="/favorite">
+                <Link href="/favorite" className="favorite">
                   favorite{" "}
                   {favorite?.length !== 0 && (
                     <div className={styles.count}>{favorite.length}</div>
