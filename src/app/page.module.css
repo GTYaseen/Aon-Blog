@@ -14,9 +14,11 @@
   bottom: 0;
   background-color: #0000001c;
 }
+
 .home .cover .overlay .title{
   color: black;
   margin-top: 150px;
+  position: relative;
 }
 .home .cover .overlay .title h1{
   font-size: 3rem;
@@ -29,6 +31,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 28px;
   margin-bottom: 120px;
+  position: relative;
 }
 .loader {
   font-size: 48px;
