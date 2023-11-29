@@ -1,5 +1,5 @@
 import Header from "@/app/components/Header/Header";
-import Container from "@/app/components/containter/Container";
+import Container from "@/app/components/Container/Container";
 import Footer from "@/app/components/footer/Footer";
 import Styles from "./page.module.css";
 import dayjs from "dayjs";
@@ -15,16 +15,22 @@ async function getData(id) {
   return product.json();
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
   const id = params.id;
 
+  // fetch data
   const data = await getData(id);
 
-  console.log(data.blog.photo_url);
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
   return {
     title: data.blog.title,
     description: data.blog.description,
-    image: data.blog.photo_url,
+    openGraph: {
+      images: [data.blog.photo_url, ...previousImages],
+    },
   };
 }
 

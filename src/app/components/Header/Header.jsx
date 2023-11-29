@@ -1,5 +1,5 @@
 "use client";
-import Container from "../containter/Container";
+import Container from "../Container/Container";
 import styles from "./header.module.css";
 import Link from "next/link";
 import { useStore } from "@/app/store";
