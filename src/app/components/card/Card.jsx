@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
 import FavBtn from "../favBtn/FavBtn";
-import { useEffect } from "react";
+
 
 const Card = ({ blog }) => {
   return (
@@ -22,7 +22,7 @@ const Card = ({ blog }) => {
           <div className={styles.read}>
             <Link href={`/article/${blog.id}`}>Read Article </Link>
             <div className="favBtnContainer">
-              <FavBtn blog={blog}  />
+              <FavBtn blog={blog} />
             </div>
           </div>
           <p>{dayjs(blog.created_at).format("YYYY, MMM DD")}</p>

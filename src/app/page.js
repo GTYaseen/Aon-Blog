@@ -62,7 +62,7 @@ export default function Home() {
           intro: "This is the favorite button",
         },
         {
-          element: "a[href='/favorite']", // Use the selector for the 'favorite' link
+          element: "a[href='/favorite']",
           intro: "This is the favorite section",
         },
       ];
@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <main className={styles.home}>
       <div className="header">
-      <Header/>
+        <Header />
       </div>
       <div className={styles.cover}>
         <div className={styles.overlay}>
@@ -97,21 +97,25 @@ export default function Home() {
         </div>
       </div>
       <Container>
-          <div className={styles.over}>
-            <InfiniteScroll
-              dataLength={list.length}
-              next={() => setSkip(skip + 12)}
-              hasMore={true}
-              className={styles.over}
-            >
-              <div className={styles.cardContainer}>
-                {loading && <span className={styles.loader}>Loading</span>}
-                {list.map((blog, index) => (
-                  <Card blog={blog} key={index} introRef={cardIntroRef} />
-                ))}
-              </div>
-            </InfiniteScroll>
-          </div>
+        <div className={styles.over}>
+          <InfiniteScroll
+            dataLength={list.length}
+            next={() => setSkip(skip + 12)}
+            hasMore={true}
+            className={styles.over}
+          >
+            <div className={styles.cardContainer}>
+              {loading && (
+                <div className={styles.loading}>
+                  <span className={styles.loader}></span>
+                </div>
+              )}
+              {list.map((blog, index) => (
+                <Card blog={blog} key={index} introRef={cardIntroRef} />
+              ))}
+            </div>
+          </InfiniteScroll>
+        </div>
       </Container>
       <Footer />
     </main>

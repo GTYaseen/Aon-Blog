@@ -20,7 +20,7 @@ const FavCard = ({ fblog }) => {
       <div className={styles.footer}>
         <div className={styles.read}>
           <Link href={`/article/${fblog.id}`}>Read Article </Link>
-          <FavBtn2 blog={fblog}/>
+          <FavBtn2 blog={fblog} />
         </div>
         <p>{dayjs(fblog.created_at).format("YYYY, MMM DD")}</p>
       </div>

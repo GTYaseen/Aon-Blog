@@ -15,7 +15,6 @@ const FavBtn2 = ({ blog }) => {
     let updatedFavorite = [...favorite];
 
 
-    // Remove items with favorite: false
     updatedFavorite = updatedFavorite.filter((item) => item.favorite);
     setFavorite(updatedFavorite);
   };

@@ -49,5 +49,11 @@
     font-size: 1rem;
   }
 }
-
-
+@media screen and (max-width: 200px) {
+  .logo {
+    font-size: 0.4rem;
+  }
+  .content ul li a {
+    font-size: 0.8rem;
+  }
+}
