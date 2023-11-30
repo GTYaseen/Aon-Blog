@@ -122,10 +122,11 @@
   .home .over {
     margin-top: -50px;
   }
+  .loading {
+    padding-left: 10px;
+  }
 }
-.loading {
-  padding-left: 10px;
-}
+
 @media screen and (max-width: 280px) {
   .home .cover .overlay .title {
     color: black;
