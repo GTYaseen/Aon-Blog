@@ -1,3 +1,4 @@
+
 import Header from "@/app/components/Header/Header";
 import Container from "@/app/components/Container/Container";
 import Footer from "@/app/components/footer/Footer";
@@ -33,7 +34,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function Article({ params }) {
   let data = await getData(params.id);
-
   return (
     <>
       <main>

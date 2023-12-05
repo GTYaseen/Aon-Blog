@@ -11,6 +11,7 @@ import "intro.js/introjs.css";
 import introJs from "intro.js";
 import { useRef } from "react";
 
+
 export default function Home() {
   const homeIntroRef = useRef();
   const cardIntroRef = useRef();
@@ -72,7 +73,6 @@ export default function Home() {
         showBullets: false,
       });
 
-      // Start home intro after a delay
       setTimeout(() => {
         homeIntroRef.current.start();
       }, 2000);

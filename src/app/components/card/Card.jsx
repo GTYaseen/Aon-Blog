@@ -4,7 +4,6 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import FavBtn from "../favBtn/FavBtn";
 
-
 const Card = ({ blog }) => {
   return (
     <div className="card-div">
@@ -20,7 +19,7 @@ const Card = ({ blog }) => {
         </div>
         <div className={styles.footer}>
           <div className={styles.read}>
-            <Link href={`/article/${blog.id}`}>Read Article </Link>
+            <Link href={`/article/${blog.id}` } >Read Article </Link>
             <div className="favBtnContainer">
               <FavBtn blog={blog} />
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 import styles from "./FavCard.module.css";
 import Link from "next/link";
 import Image from "next/image";
